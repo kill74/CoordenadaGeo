@@ -1,15 +1,29 @@
+package geo;
+
 public class CoordenadaGeo {
     //Só se podem trocar estas variaveis dentro da class;
     //Que neste caso só se pode mudar os valores dentro do construtor
     //Que por si os "valores" estão dentro de métodos
     private double latitude;
     private double longitude;
-    //Construtor para iniciar os valores dos campos
+    private String descricao;
+
+    //Construtor para iniciar os valores dos campos (sem descrição)
     public CoordenadaGeo(double latitude, double longitude) {
         //Validações
         //Vão buscar os valores ão método com os nomes correspondidos
         this.latitude = validateLatitude(latitude);
         this.longitude = validateLongitude(longitude);
+        this.descricao = "";
+    }
+
+    //Construtor para iniciar os valores dos campos (com descrição)
+    public CoordenadaGeo(double latitude, double longitude, String descricao) {
+        //Validações
+        //Vão buscar os valores ão método com os nomes correspondidos
+        this.latitude = validateLatitude(latitude);
+        this.longitude = validateLongitude(longitude);
+        this.descricao = descricao;
     }
 
     //Estes 3 métodos só iram verificar a latitude para ver se esta a "Norte", "Sul" ou no "Equador"
@@ -71,6 +85,9 @@ public class CoordenadaGeo {
     public double getLongitude(){
         return longitude;
     }
+    public String getDescricao(){
+        return descricao;
+    }
 
     //Setters
     public void setLatitude(double Latitude){
@@ -79,13 +96,17 @@ public class CoordenadaGeo {
     public void setLongitude(double Longitude){
         this.longitude = validateLongitude(Longitude);
     }
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
+    }
 
     //Irá simplesmente fazer com que o "Sout" da variável apareça com o valor correspondido
-    // Se não tivermos isto irá simplesmente aparecer o valor do objeto, como por exemplo "CoordenadaGeo@3b9a45b3"
+    // Se não tivermos isto irá simplesmente aparecer o valor do objeto, como por exemplo "geo.CoordenadaGeo@3b9a45b3"
     @Override
     public String toString() {
-        return "CoordenadaGeo{" +
-                "Latitude=" + latitude +
+        return "geo.CoordenadaGeo{" +
+                "Descricao='" + descricao + '\'' +
+                ", Latitude=" + latitude +
                 ", Longitude=" + longitude +
                 '}';
     }

@@ -1,3 +1,6 @@
+package Teste;
+import geo.CoordenadaGeo;
+
 public class TesteCoordenada {
     public static void main(String[] args) {
         CoordenadaGeo c1 = new CoordenadaGeo(39.819675780318285, -7.512379302586671);
