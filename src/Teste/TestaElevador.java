@@ -3,7 +3,7 @@ import elevador.Elevador;
 
 public class TestaElevador {
     public static void main(String[] args) {
-        Elevador e1 = new Elevador(-3, 5, 10);
+        Elevador e1 = new Elevador(5, -3, 10);
         System.out.println(e1);
 
         Elevador e2 = new Elevador(-1,12);
@@ -16,6 +16,17 @@ public class TestaElevador {
         System.out.println(e1.estaFundo());
         System.out.println(e3.estaTopo());
         System.out.println(e3.estaFundo());
+
+        System.out.println(e1.acede(-3));
+        System.out.println(e1.acede(10));
+        System.out.println(e1.acede(5));
+        System.out.println(e1.acede(-4));
+        System.out.println(e1.acede(11));
+
+        for(int i = 0; i < 10; i++){
+            e1.desce();
+            System.out.println(e1);
+        }
         //e1.setAndaratual(-3);
         //System.out.println(e1);
     }
