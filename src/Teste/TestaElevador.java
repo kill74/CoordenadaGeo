@@ -16,6 +16,12 @@ public class TestaElevador {
         System.out.println(e1.estaFundo());
         System.out.println(e3.estaTopo());
         System.out.println(e3.estaFundo());
+
+        System.out.println(e1.acede(-3));
+        System.out.println(e1.acede(10));
+        System.out.println(e1.acede(5));
+        System.out.println(e1.acede(-4));
+        System.out.println(e1.acede(11));
         //e1.setAndaratual(-3);
         //System.out.println(e1);
     }

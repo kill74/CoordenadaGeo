@@ -8,7 +8,7 @@ public class Elevador {
     //Construtor
     public Elevador(int andaratual, int andarinferior, int andarsuperior) {
         if(andarinferior >= andarsuperior)
-            throw new IllegalArgumentException("Andar inferior superior ao andar inferior");
+            throw new IllegalArgumentException("Andar inferior superior ao andar superior");
         if(andaratual < andarinferior || andaratual > andarsuperior)
             throw new IllegalArgumentException("Andar atual invalido");
         this.andaratual = andaratual;
@@ -38,19 +38,21 @@ public class Elevador {
 
     public void sobe(){
         if(estaTopo())
-            throw new  IllegalArgumentException();
+            throw new IllegalArgumentException("Elevador já está no topo");
         andaratual++;
     }
 
     public void desce(){
-        if(estaTopo())
-            throw new  IllegalArgumentException();
+        if(estaFundo())
+            throw new IllegalArgumentException("Elevador já está no fundo");
         andaratual--;
     }
 
-    
-
-
+    public void irPara(int andar){
+        if(!acede(andar))
+            throw new IllegalArgumentException("Andar inválido: " + andar);
+        this.andaratual = andar;
+    }
 
     //ToString
     @Override
@@ -91,6 +93,7 @@ public class Elevador {
         }
         this.andarsuperior = andarsuperior;
     }
+
     public static void main(String[] args) {
 
     }
