@@ -48,9 +48,14 @@ public class Elevador {
         andaratual--;
     }
 
-    
-
-
+    public void irPara(int andar) {
+        if (!acede(andar))
+            throw new IllegalArgumentException();
+        while (andaratual < andar)
+            sobe();
+        while (andaratual > andar)
+            desce();
+    }
 
     //ToString
     @Override
