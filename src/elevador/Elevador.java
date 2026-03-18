@@ -5,11 +5,11 @@ public class Elevador {
     private int andarinferior;
     private int andarsuperior;
 
-    //Construtor
+    // Construtor
     public Elevador(int andaratual, int andarinferior, int andarsuperior) {
-        if(andarinferior >= andarsuperior)
+        if (andarinferior >= andarsuperior)
             throw new IllegalArgumentException("Andar inferior superior ao andar inferior");
-        if(andaratual < andarinferior || andaratual > andarsuperior)
+        if (andaratual < andarinferior || andaratual > andarsuperior)
             throw new IllegalArgumentException("Andar atual invalido");
         this.andaratual = andaratual;
         this.andarinferior = andarinferior;
@@ -21,30 +21,30 @@ public class Elevador {
     }
 
     public Elevador(int andarsuperior) {
-        this(0,0,andarsuperior);
+        this(0, 0, andarsuperior);
     }
 
-    public boolean estaTopo(){
+    public boolean estaTopo() {
         return andaratual == andarsuperior;
     }
 
-    public boolean estaFundo(){
+    public boolean estaFundo() {
         return andaratual == andarinferior;
     }
 
-    public boolean acede(int andar){
+    public boolean acede(int andar) {
         return (andar >= andarinferior && andar <= andarsuperior);
     }
 
-    public void sobe(){
-        if(estaTopo())
-            throw new  IllegalArgumentException();
+    public void sobe() {
+        if (estaTopo())
+            throw new IllegalArgumentException();
         andaratual++;
     }
 
-    public void desce(){
-        if(estaTopo())
-            throw new  IllegalArgumentException();
+    public void desce() {
+        if (estaTopo())
+            throw new IllegalArgumentException();
         andaratual--;
     }
 
@@ -57,7 +57,7 @@ public class Elevador {
             desce();
     }
 
-    //ToString
+    // ToString
     @Override
     public String toString() {
         return "Elevador{" +
@@ -67,36 +67,37 @@ public class Elevador {
                 '}';
     }
 
-    //Getters e Setters
-    public int getAndaratual(){
+    // Getters e Setters
+    public int getAndaratual() {
         return this.andaratual;
     }
-    public int getAndarinferior(){
+
+    public int getAndarinferior() {
         return this.andarinferior;
     }
-    public int getAndarsuperior(){
+
+    public int getAndarsuperior() {
         return this.andarsuperior;
     }
 
-    public void setAndaratual(int andaratual){
-        if(andaratual < andarinferior || andaratual > andarsuperior ){
+    public void setAndaratual(int andaratual) {
+        if (andaratual < andarinferior || andaratual > andarsuperior) {
             throw new IllegalArgumentException("Andar atual invalido");
         }
         this.andaratual = andaratual;
     }
-    public void setAndarinferior(int andarinferior){
-        if(andarinferior > andaratual || andarinferior > andarsuperior){
+
+    public void setAndarinferior(int andarinferior) {
+        if (andarinferior > andaratual || andarinferior > andarsuperior) {
             throw new IllegalArgumentException("Andar inferior invalido");
         }
         this.andarinferior = andarinferior;
     }
-    public void setAndarsuperior(int andarsuperior){
-        if(andarsuperior < andaratual || andarsuperior < andarinferior){
+
+    public void setAndarsuperior(int andarsuperior) {
+        if (andarsuperior < andaratual || andarsuperior < andarinferior) {
             throw new IllegalArgumentException("Andar superior invalido");
         }
         this.andarsuperior = andarsuperior;
-    }
-    public static void main(String[] args) {
-
     }
 }
