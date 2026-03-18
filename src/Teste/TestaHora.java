@@ -9,5 +9,8 @@ public class TestaHora {
 
         Hora h2 = new Hora();
         System.out.println(h2);
+
+        Hora h3 = new Hora(Hora.SEGUNDOS_DIA - 1);
+        System.out.println(h3);
     }
 }

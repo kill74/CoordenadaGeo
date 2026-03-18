@@ -11,80 +11,86 @@ public class Hora {
     public static final int SEGUNDOS_DIA = HORAS_DIA * SEGUNDOS_HORA;
     public static final int MINUTOS_DIA = HORAS_DIA * MINUTOS_HORA;
 
-    private int hora;
-    private int min;
-    private int seg;
+    private int horas;
+    private int minutos;
+    private int segundos;
 
-    public Hora(int hora, int min, int seg) {
-        this.hora = checkHoras(hora);
-        this.min = checkMinutos(min);
-        this.seg = checkSegundos(seg);
-     }
+    public Hora(int horas, int minutos, int segundos) {
+        this.horas = checkHoras(horas);
+        this.minutos = checkMinutos(minutos);
+        this.segundos = checkSegundos(segundos);
+    }
 
-     public Hora(){
+    public Hora(){
         LocalTime agora = LocalTime.now();
-        this.hora = agora.getHour();
-        this.min = agora.getMinute();
-        this.seg = agora.getSecond();
-     }
+        horas = agora.getHour();
+        minutos = agora.getMinute();
+        segundos = agora.getSecond();
+    }
 
-     public Hora(int totalSegundos){
-
-     }
-
-     public Hora(String hStr){
-
-     }
-
-
-    private int checkHoras(int hora) {
-        if (hora < 0 || hora >= HORAS_DIA) {
-            throw new IllegalArgumentException("Valores inválidos para hora, minuto ou segundo");
+    public Hora (int totalSegundos){
+        if (totalSegundos < 0 || totalSegundos >= SEGUNDOS_DIA) {
+            throw new IllegalArgumentException("Total de segundos invalido: " + totalSegundos);
         }
-        return hora;
+        horas = totalSegundos / SEGUNDOS_HORA;
+        int resto = totalSegundos % SEGUNDOS_HORA;
+        minutos = resto / SEGUNDOS_MINUTO;
+        segundos = resto % SEGUNDOS_MINUTO;
     }
 
-    private int checkMinutos(int min) {
-        if (min < 0 || min >= MINUTOS_HORA) {
-            throw new IllegalArgumentException("Valores inválidos para hora, minuto ou segundo");
+    public Hora(String hStr){
+
+    }
+
+    private int checkHoras(int horas) {
+        if (horas < 0 || horas >= HORAS_DIA) {
+            throw new IllegalArgumentException("Horas invalidas" + horas);
         }
-        return min;
+        return horas;
     }
 
-    private int checkSegundos(int seg) {
-        if (seg < 0 || seg >= SEGUNDOS_MINUTO) {
-            throw new IllegalArgumentException("Valores inválidos para hora, minuto ou segundo");
+    private int checkMinutos(int minutos) {
+        if (minutos < 0 || minutos >= MINUTOS_HORA) {
+            throw new IllegalArgumentException("Minutos invalidos" + minutos);
         }
-        return seg;
+        return minutos;
     }
 
-    public int getHora() {
-        return hora;
+    private int checkSegundos(int segundos) {
+        if (segundos < 0 || segundos >= SEGUNDOS_MINUTO) {
+            throw new IllegalArgumentException("Segundos invalidos" + segundos);
+        }
+        return segundos;
     }
 
-    public void setHora(int hora) {
-        this.hora = checkHoras(hora);
+    public int getHoras() {
+        return horas;
     }
 
-    public int getMin() {
-        return min;
+    public void setHoras(int horas) {
+        this.horas = checkHoras(horas);
     }
 
-    public void setMin(int min) {
-        this.min = checkMinutos(min);
+    public int getMinutos() {
+        return minutos;
     }
 
-    public int getSeg() {
-        return seg;
+    public void setMinutos(int minutos) {
+        this.minutos = checkMinutos(minutos);
     }
 
-    public void setSeg(int seg) {
-        this.seg = checkSegundos(seg);
+    public int getSegundos() {
+        return segundos;
     }
+
+    public void setSegundos(int segundos) {
+        this.segundos = checkSegundos(segundos);
+    }
+
 
     @Override
     public String toString() {
-        return String.format("%02d:%02d:%02d", hora, min, seg);
+        return String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
 
 }
