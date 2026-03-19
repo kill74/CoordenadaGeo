@@ -37,10 +37,40 @@ public class Hora {
         minutos = resto / SEGUNDOS_MINUTO;
         segundos = resto % SEGUNDOS_MINUTO;
     }
-
-    public Hora(String hStr){
-
+    // Comparar duas Horas
+    public int compareTo(Hora outra){
+        if(this.horas != outra.horas)
+            return (this.horas - outra.horas);
+        if(this.minutos != outra.minutos)
+            return (this.horas - outra.minutos);
+        return (this.segundos - outra.segundos);
     }
+
+    public void somaHoras(int numhoras){
+        if (numhoras < 0)
+            throw new IllegalArgumentException("numHoras tem de ser positivo " + numhoras);
+        horas = (this.horas + numhoras) % HORAS_DIA;
+    }
+
+    public void somaMinutos(int numminutos){
+        if(numminutos < 0)
+            throw new IllegalArgumentException("somaMinutos tem de ser positivo " + numminutos);
+        int total = this.minutos + numminutos;
+        minutos = total % MINUTOS_HORA;
+        somaHoras(total / MINUTOS_HORA);
+    }
+
+    public void somaSegundos(int numsegundos){
+        if(numsegundos < 0)
+            throw new IllegalArgumentException("somaSegundos tem de ser positivo " + numsegundos);
+        segundos = (this.segundos + segundos) % SEGUNDOS_MINUTO;
+    }
+
+    public int toSegundos(){
+       return (this.horas * 3600);
+    }
+
+    public int diferencaSegs(){}
 
     private int checkHoras(int horas) {
         if (horas < 0 || horas >= HORAS_DIA) {

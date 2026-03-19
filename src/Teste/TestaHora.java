@@ -12,5 +12,7 @@ public class TestaHora {
 
         Hora h3 = new Hora(Hora.SEGUNDOS_DIA - 1);
         System.out.println(h3);
+
+        
     }
 }
