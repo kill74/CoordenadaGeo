@@ -63,14 +63,18 @@ public class Hora {
     public void somaSegundos(int numsegundos){
         if(numsegundos < 0)
             throw new IllegalArgumentException("somaSegundos tem de ser positivo " + numsegundos);
-        segundos = (this.segundos + segundos) % SEGUNDOS_MINUTO;
+        int total = this.segundos + numsegundos;
+        segundos = total % SEGUNDOS_MINUTO;
+        somaMinutos(total / SEGUNDOS_MINUTO);
     }
 
     public int toSegundos(){
-       return (this.horas * 3600);
+       return (this.horas * 3600) + (this.minutos * 60) + this.segundos;
     }
 
-    public int diferencaSegs(){}
+    public int diferencaSegs(){
+        return 0;
+    }
 
     private int checkHoras(int horas) {
         if (horas < 0 || horas >= HORAS_DIA) {
